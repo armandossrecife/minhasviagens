@@ -35,8 +35,7 @@ public class Login extends AppCompatActivity {
 
         //tratar excecao de erro de conexao ou qualquer outra excecao
         try {
-            Usuario usuario = new Usuario();
-            usuario = new ControladorUsuarios().carregaDadosUsuario("armando@ufpi.edu.br");
+            Usuario usuario = new ControladorUsuarios().carregaDadosUsuario("armando@ufpi.edu.br");
             //verifica os dados do usuario
             if (usuario != null){
                 if (usuarioInformado.equals(usuario.getEmail()) && senhaInformada.equals(usuario.getSenha())) {
@@ -53,15 +52,38 @@ public class Login extends AppCompatActivity {
                     //erro de autenticacao
                     String mensagemErroAutenticacao = "Erro de autenticação";
                     Toast toat = Toast.makeText(this, mensagemErroAutenticacao, Toast.LENGTH_LONG);
+                    toat.show();
+                    limpaCamposEntrada();
                 }
             }else {
                 //erro de autenticacao
                 String mensagemErroAutenticacao = "Usuario não existe!";
                 Toast toat = Toast.makeText(this, mensagemErroAutenticacao, Toast.LENGTH_LONG);
+                toat.show();
+                limpaCamposEntrada();
             }
 
         } catch (Exception ex) {
             Toast toast = Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG);
+            toast.show();
+            limpaCamposEntrada();
         }
+    }
+
+    /**
+     * Chama a tela e servico de recuperacao de senha
+     * @param view
+     */
+    public void esqueciSenha(View view){
+        //TODO: metodo nao implementado
+        //sugestao: mostrar uma tela pedindo o e-mail e depois dispara um servico passando a senha para o e-mail passado.
+        String mensagem = "Método não implementado";
+        Toast toast = Toast.makeText(this, mensagem, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    public void limpaCamposEntrada(){
+        usuario.setText("");
+        senha.setText("");
     }
 }

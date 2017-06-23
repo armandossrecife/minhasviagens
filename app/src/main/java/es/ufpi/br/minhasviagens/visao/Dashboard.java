@@ -1,6 +1,7 @@
 package es.ufpi.br.minhasviagens.visao;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ import es.ufpi.br.minhasviagens.dados.Usuario;
 
 public class Dashboard extends AppCompatActivity {
     private Usuario usuario = new Usuario();
+    private Bundle bundleUsuario = new Bundle();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,22 +25,23 @@ public class Dashboard extends AppCompatActivity {
             usuario.setNome(dadosUsuario.getString("nomeUsuario"));
             usuario.setEmail(dadosUsuario.getString("emailUsuario"));
         }
-
+        //carrega o bundle de Usuario para passar dados entre as Activities
+        bundleUsuario.putString("nomeUsuario", usuario.getNome());
+        bundleUsuario.putString("emailUsuario", usuario.getEmail());
     }
 
     @Override
     public void onBackPressed() {
-        Toast toast = Toast.makeText(this, "Usuário já logado!", Toast.LENGTH_SHORT);
+        String mensagem="Usuário " + usuario.getNome().toString() + " já logado";
+        Toast toast = Toast.makeText(this, mensagem, Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     //listarViagens
     public void listarViagens(View v){
         //chama a Tela de listar viagens ja registradas
-        Bundle bundle = new Bundle();
-        bundle.putString("nomeUsuario", usuario.getNome());
-        bundle.putString("emailUsuario", usuario.getEmail());
         Intent intentListarViagens = new Intent(this, ListaViagens.class);
-        intentListarViagens.putExtras(bundle);
+        intentListarViagens.putExtras(bundleUsuario);
         //carrega a tela principal e passa dados do Usuario
         startActivity(intentListarViagens);
     }
@@ -46,11 +50,8 @@ public class Dashboard extends AppCompatActivity {
     public void inserirViagem(View v){
         //chama a Tela de inserir uma nova viagem
         // pode ser viagem de lazer ou de negocios
-        Bundle bundle = new Bundle();
-        bundle.putString("nomeUsuario", usuario.getNome());
-        bundle.putString("emailUsuario", usuario.getEmail());
         Intent intentInserirViagens = new Intent(this, NovaViagem.class);
-        intentInserirViagens.putExtras(bundle);
+        intentInserirViagens.putExtras(bundleUsuario);
         //carrega a tela principal e passa dados do Usuario
         startActivity(intentInserirViagens);
     }
@@ -67,6 +68,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     public void sobre(View v){
-        // TODO: chama a tela sobre a aplicacao
+        Intent intentSobre = new Intent(this,Sobre.class);
+        startActivity(intentSobre);
     }
 }
