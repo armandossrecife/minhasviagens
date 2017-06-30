@@ -5,11 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import es.ufpi.br.minhasviagens.R;
 import es.ufpi.br.minhasviagens.dados.Usuario;
+import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 
+/**
+ * Tela Principal que mostra as opcoes da aplicacao
+ */
 public class Dashboard extends AppCompatActivity {
     private Usuario usuario = new Usuario();
     private Bundle bundleUsuario = new Bundle();
@@ -33,8 +36,7 @@ public class Dashboard extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         String mensagem="Usuário " + usuario.getNome().toString() + " já logado";
-        Toast toast = Toast.makeText(this, mensagem, Toast.LENGTH_SHORT);
-        toast.show();
+        new Mensagens().mostraMensagem(this, mensagem);
     }
 
     //listarViagens
@@ -58,7 +60,10 @@ public class Dashboard extends AppCompatActivity {
 
     //inserirGasto
     public void inserirGasto(View v){
-        // TODO: chama a Tela de inserir um gasto de acordo com uma categoria (refeicao, combustivel, cinema, ...)
+        //Chama a Tela NovoGasto
+        Intent intentNovoGasto = new Intent(this, NovoGasto.class);
+        intentNovoGasto.putExtras(bundleUsuario);
+        startActivity(intentNovoGasto);
     }
 
     //fazConfiguracoes
@@ -67,6 +72,10 @@ public class Dashboard extends AppCompatActivity {
         // as configuracoes sao locais
     }
 
+    /**
+     * Tela que exibe detalhes sobre a aplicacao
+     * @param v view corrente
+     */
     public void sobre(View v){
         Intent intentSobre = new Intent(this,Sobre.class);
         startActivity(intentSobre);

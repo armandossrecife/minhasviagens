@@ -5,12 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import es.ufpi.br.minhasviagens.R;
 import es.ufpi.br.minhasviagens.controle.ControladorUsuarios;
 import es.ufpi.br.minhasviagens.dados.Usuario;
+import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 
+/**
+ * Classe que implementa a Tela de Login da Aplicacao
+ */
 public class Login extends AppCompatActivity {
     private EditText usuario;
     private EditText senha;
@@ -35,7 +38,7 @@ public class Login extends AppCompatActivity {
 
         //tratar excecao de erro de conexao ou qualquer outra excecao
         try {
-            Usuario usuario = new ControladorUsuarios().carregaDadosUsuario("armando@ufpi.edu.br");
+            Usuario usuario = new ControladorUsuarios().carregaDadosUsuario(usuarioInformado);
             //verifica os dados do usuario
             if (usuario != null){
                 if (usuarioInformado.equals(usuario.getEmail()) && senhaInformada.equals(usuario.getSenha())) {
@@ -51,21 +54,17 @@ public class Login extends AppCompatActivity {
                 }else {
                     //erro de autenticacao
                     String mensagemErroAutenticacao = "Erro de autenticação";
-                    Toast toat = Toast.makeText(this, mensagemErroAutenticacao, Toast.LENGTH_LONG);
-                    toat.show();
+                    new Mensagens().mostraMensagem(this, mensagemErroAutenticacao);
                     limpaCamposEntrada();
                 }
             }else {
                 //erro de autenticacao
                 String mensagemErroAutenticacao = "Usuario não existe!";
-                Toast toat = Toast.makeText(this, mensagemErroAutenticacao, Toast.LENGTH_LONG);
-                toat.show();
+                new Mensagens().mostraMensagem(this, mensagemErroAutenticacao);
                 limpaCamposEntrada();
             }
-
         } catch (Exception ex) {
-            Toast toast = Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG);
-            toast.show();
+            new Mensagens().mostraMensagem(this, ex.getMessage());
             limpaCamposEntrada();
         }
     }
@@ -78,12 +77,15 @@ public class Login extends AppCompatActivity {
         //TODO: metodo nao implementado
         //sugestao: mostrar uma tela pedindo o e-mail e depois dispara um servico passando a senha para o e-mail passado.
         String mensagem = "Método não implementado";
-        Toast toast = Toast.makeText(this, mensagem, Toast.LENGTH_LONG);
-        toast.show();
+        new Mensagens().mostraMensagem(this, mensagem);
     }
 
+    /**
+     * Limpa os campos de usuario e senha da tela corrente
+     */
     public void limpaCamposEntrada(){
         usuario.setText("");
         senha.setText("");
     }
+
 }

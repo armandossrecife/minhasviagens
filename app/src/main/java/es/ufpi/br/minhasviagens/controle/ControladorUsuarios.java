@@ -1,5 +1,6 @@
 package es.ufpi.br.minhasviagens.controle;
 
+import es.ufpi.br.minhasviagens.dados.RepositorioUsuarios;
 import es.ufpi.br.minhasviagens.dados.Usuario;
 
 /**
@@ -7,21 +8,19 @@ import es.ufpi.br.minhasviagens.dados.Usuario;
  */
 public class ControladorUsuarios {
     public Usuario carregaDadosUsuario(String email){
-        //TODO: implementar servico de busca de usuario por email
         Usuario usuario = new Usuario();
-        //Procurar usuario...
-        //se usuario existe
-        if (email.equals("armando@ufpi.edu.br")){
-            usuario.setNome("Armando Soares Sousa");
-            usuario.setEmail("armando@ufpi.edu.br");
-            usuario.setEndereco("Rua Territorio Fernando de Noronha");
-            usuario.setSenha("123");
-            usuario.setSexo("Masculino");
+
+        //Recupera informacoes do repositorio ou servico de base de usuarios
+        RepositorioUsuarios usuarios = new RepositorioUsuarios();
+        usuarios.popoulaRepositorioUsuarios();
+        usuario = usuarios.buscaUsuario(email);
+
+        if (usuario != null){
+            return usuario;
         }else {
             String mensagem="Usuario não existe!";
             System.out.println(mensagem);
             return null;
         }
-        return usuario;
     }
 }

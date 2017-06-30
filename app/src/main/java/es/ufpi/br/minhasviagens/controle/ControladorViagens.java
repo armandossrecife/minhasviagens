@@ -1,5 +1,8 @@
 package es.ufpi.br.minhasviagens.controle;
 
+import java.util.List;
+
+import es.ufpi.br.minhasviagens.dados.RepositorioViagens;
 import es.ufpi.br.minhasviagens.dados.Usuario;
 import es.ufpi.br.minhasviagens.dados.Viagem;
 
@@ -7,9 +10,12 @@ import es.ufpi.br.minhasviagens.dados.Viagem;
  * Created by armandosoaressousa on 19/06/17.
  */
 public class ControladorViagens {
-    public void listarViagens(Usuario usuario){
-        //TODO: implementar servico de listar viagens de um usuario
+    public List<Viagem> listarViagens(Usuario usuario){
         System.out.println("chama o servico que lista viagens do usuario " + usuario.getNome());
+
+        RepositorioViagens viagens = new RepositorioViagens();
+        viagens.populaRepositorioViagens();
+        return(viagens.getViagens());
     }
 
     public void novaViagem(Usuario usuario, Viagem viagem){

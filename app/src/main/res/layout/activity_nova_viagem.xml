@@ -8,11 +8,138 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="es.ufpi.br.minhasviagens.visao.NovaViagem">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout">
+
+        <LinearLayout
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Nova Viagem"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Destino"/>
+
+            <EditText
+                android:id="@+id/editTextDestino"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Tipo da Viagem"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tipoViagem"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioLazer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:checked="true"
+                android:text="Lazer" />
+
+            <RadioButton
+                android:id="@+id/radioNegocios"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:checked="false"
+                android:text="Negócios" />
+        </RadioGroup>
+        </LinearLayout>
+
+    </TableLayout>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Nova Viagem"
-        android:textStyle="bold" />
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="Data de Entrada"
+        android:layout_below="@+id/tableLayout"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/buttonDataEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView3"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="11dp"
+        android:text="Selecione" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonDataEntrada"
+        android:layout_centerHorizontal="true"
+        android:text="Data de Saída" />
+
+    <Button
+        android:id="@+id/buttonDataSaida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonDataEntrada"
+        android:layout_alignStart="@+id/textView4"
+        android:text="Selecione" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/buttonDataEntrada"
+        android:layout_centerVertical="true"
+        android:text="Orçamento" />
+
+    <EditText
+        android:id="@+id/editTextValorOrcamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_below="@+id/textView5"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Valor" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editTextValorOrcamento"
+        android:layout_below="@+id/editTextValorOrcamento"
+        android:layout_marginTop="18dp"
+        android:text="Quantidade de Pessoas" />
+
+    <EditText
+        android:id="@+id/editTextQuantidadePessoas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView6"
+        android:layout_below="@+id/textView6"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Quantidade" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Criar Nova Viagem"
+        android:layout_below="@+id/editTextQuantidadePessoas"
+        android:layout_alignStart="@+id/editTextQuantidadePessoas" />
 
 </RelativeLayout>

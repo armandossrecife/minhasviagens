@@ -5,11 +5,31 @@ import android.os.Bundle;
 
 import es.ufpi.br.minhasviagens.R;
 
+import es.ufpi.br.minhasviagens.dados.Ponto;
 import es.ufpi.br.minhasviagens.dados.Usuario;
 import es.ufpi.br.minhasviagens.controle.*;
+import es.ufpi.br.minhasviagens.dados.Viagem;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * Tela que Lista as viagens do usuario
+ */
 public class ListaViagens extends AppCompatActivity {
     Usuario usuario = new Usuario();
+    private Bundle bundleListaPontos = new Bundle();
+    private Button botao;
+    private ListView listView;
+    List<Viagem> viagensUsuario = new LinkedList<Viagem>();
+    List<Ponto> pontosViagensUsuario = new LinkedList<Ponto>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +42,59 @@ public class ListaViagens extends AppCompatActivity {
             usuario.setNome(dadosUsuario.getString("nomeUsuario"));
             usuario.setEmail(dadosUsuario.getString("emailUsuario"));
         }
+
         this.listarViagens();
+
+        listView = (ListView) findViewById(R.id.listViewViagens);
+        ArrayList<String> lista = new ArrayList<String>();
+
+        for (Viagem v : viagensUsuario){
+               lista.add(v.getDestino());
+        }
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lista);
+        listView.setAdapter(adapter);
+        //listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        botao = (Button) findViewById(R.id.buttonMapa);
+        botao.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                exibeMapa(view);
+            }
+        });
     }
 
+    /**
+     *  Exige a lista de cidades de cada viagem realizada pelo usuario
+     */
     public void listarViagens(){
-        new ControladorViagens().listarViagens(usuario);
+        //Mostra a lista de viagens na Tela
+        viagensUsuario = new ControladorViagens().listarViagens(usuario);
+
+        /**
+         *
+         Carrega os pontos de cada viagem List<Ponto> listaPontos
+         lista de pontos (latitude, longitude) das viagens listadas
+         E preciso criar um bundle para passar os pontos para o Mapa
+         bundleListaPontos...
+         */
+        if (viagensUsuario != null) {
+            for (Viagem vu : viagensUsuario) {
+                pontosViagensUsuario.add(vu.getCidade());
+            }
+        }
+    }
+
+    /**
+     * Exibe o mapa com as cidade de cada viagem realizada do usuario
+     * @param view view corrente
+     */
+    public void exibeMapa(View view){
+        Intent intentMostraMapaViagens = new Intent(this, MapaViagens.class);
+        //intentMostraViagens.putExtras(bundleListaPontos) carrega os pontos para o Mapa
+        startActivity(intentMostraMapaViagens);
     }
 }

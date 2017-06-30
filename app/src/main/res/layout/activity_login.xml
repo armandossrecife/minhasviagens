@@ -22,16 +22,18 @@
         android:layout_below="@id/textView">
 
         <EditText
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:id="@+id/editTextEmail" />
+            tools:text="armando@ufpi.edu.br" />
 
         <EditText
+            android:id="@+id/editTextSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:id="@+id/editTextSenha" />
+            tools:text="123" />
 
 
         <LinearLayout

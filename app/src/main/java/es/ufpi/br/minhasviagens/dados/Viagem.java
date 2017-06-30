@@ -9,6 +9,24 @@ public class Viagem {
     private String dataFim;
     private String destino;
     private Double valor;
+    private Ponto cidade;
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Ponto getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Ponto cidade) {
+        this.cidade = cidade;
+    }
 
     public String getDescricao() {
         return descricao;
