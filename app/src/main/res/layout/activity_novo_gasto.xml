@@ -37,80 +37,58 @@
         android:id="@+id/textViewValorGasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/spinnerTipoGasto"
+        android:text="Valor"
         android:layout_below="@+id/spinnerTipoGasto"
-        android:layout_marginTop="12dp"
-        android:text="Valor" />
+        android:layout_alignStart="@+id/textViewDataGasto"
+        android:layout_marginTop="18dp" />
 
-    <EditText
-        android:id="@+id/editTextValorGasto"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewValorGasto"
-        android:layout_below="@+id/textViewValorGasto"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Valor" />
-
-    <TextView
-        android:id="@+id/textViewDataGasto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editTextValorGasto"
-        android:layout_below="@+id/editTextValorGasto"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="21dp"
-        android:text="Data" />
-
-    <EditText
-        android:id="@+id/editTextDataGasto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editTextValorGasto"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:inputType="date"
-        android:text="Data" />
+        android:onClick="selecionarDataGasto"
+        android:text="Data"
+        android:id="@+id/buttonDataGasto"
+        android:layout_alignTop="@+id/editTextValorGasto"
+        android:layout_toEndOf="@+id/editTextValorGasto"
+        android:layout_marginStart="12dp" />
 
     <TextView
         android:id="@+id/textViewDescricao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editTextDataGasto"
-        android:layout_below="@+id/editTextDataGasto"
+        android:layout_below="@id/buttonDataGasto"
         android:layout_marginTop="20dp"
         android:text="Descrição" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editTextValorGasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewDescricao"
-        android:layout_below="@+id/textViewDescricao"
+        android:layout_alignStart="@+id/spinnerTipoGasto"
+        android:layout_below="@+id/textViewValorGasto"
         android:layout_marginTop="11dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/textViewLocalGasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText3"
-        android:layout_below="@+id/editText3"
-        android:layout_marginTop="19dp"
-        android:text="Local" />
+        android:text="Local"
+        android:layout_above="@+id/editTextLocalGasto"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="21dp" />
 
     <EditText
         android:id="@+id/editTextLocalGasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText3"
-        android:layout_below="@+id/textViewLocalGasto"
+        android:layout_above="@+id/buttonSalvarGasto"
+        android:layout_alignEnd="@+id/editTextDescricaoGasto"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="37dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Local" />
+        android:inputType="text" />
 
     <Button
         android:id="@+id/buttonSalvarGasto"
@@ -119,6 +97,17 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignStart="@+id/editTextLocalGasto"
-        android:text="Salvar" />
+        android:text="Salvar"
+        android:onClick="salvarGasto"/>
+
+    <EditText
+        android:id="@+id/editTextDescricaoGasto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonDataGasto"
+        android:layout_alignStart="@+id/editTextValorGasto"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:inputType="text" />
 
 </RelativeLayout>

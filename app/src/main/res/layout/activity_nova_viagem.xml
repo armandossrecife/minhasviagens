@@ -78,7 +78,8 @@
         android:layout_alignEnd="@+id/textView3"
         android:layout_below="@+id/textView3"
         android:layout_marginTop="11dp"
-        android:text="Selecione" />
+        android:text="Selecione"
+        android:onClick="selecionarDataEntrada"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -94,7 +95,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/buttonDataEntrada"
         android:layout_alignStart="@+id/textView4"
-        android:text="Selecione" />
+        android:text="Selecione"
+        android:onClick="selecionarDataSaida"/>
 
     <TextView
         android:id="@+id/textView5"
@@ -111,8 +113,7 @@
         android:layout_alignStart="@+id/textView5"
         android:layout_below="@+id/textView5"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Valor" />
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/textView6"
@@ -130,8 +131,7 @@
         android:layout_alignStart="@+id/textView6"
         android:layout_below="@+id/textView6"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Quantidade" />
+        android:inputType="number" />
 
     <Button
         android:id="@+id/button3"
@@ -140,6 +140,7 @@
         android:layout_marginTop="15dp"
         android:text="Criar Nova Viagem"
         android:layout_below="@+id/editTextQuantidadePessoas"
-        android:layout_alignStart="@+id/editTextQuantidadePessoas" />
+        android:layout_alignStart="@+id/editTextQuantidadePessoas"
+        android:onClick="criarNovaViagem"/>
 
 </RelativeLayout>

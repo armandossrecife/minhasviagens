@@ -20,6 +20,6 @@ public class ControladorViagens {
 
     public void novaViagem(Usuario usuario, Viagem viagem){
         //TODO: implementar servico de inserir uma viagem de um usuario
-        System.out.println("insere nova viagem do usuario " + usuario.getNome());
+        System.out.println("Salva nova viagem do usuario " + usuario.getNome() + "com destino " + viagem.getDestino());
     }
 }
