@@ -18,6 +18,11 @@ public class RepositorioUsuarios {
         usuarios.add(usuario);
     }
 
+    /**
+     * Busca um usuário por e-mail
+     * @param email e-mail do usuário
+     * @return Usuario
+     */
     public Usuario buscaUsuario(String email){
         Usuario auxiliar=null;
 
@@ -32,10 +37,17 @@ public class RepositorioUsuarios {
         return auxiliar;
     }
 
+    /**
+     * Lista todos os usuários cadastrados no repositório
+     * @return
+     */
     public List<Usuario> getUsuarios(){
         return usuarios;
     }
 
+    /**
+     * Popula dados de usuários aleatórios para efeito de testes
+     */
     public void popoulaRepositorioUsuarios(){
         Usuario usuario1 = new Usuario();
         usuario1.setNome("Armando Soares Sousa");

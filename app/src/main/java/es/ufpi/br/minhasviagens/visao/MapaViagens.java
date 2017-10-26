@@ -12,6 +12,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import es.ufpi.br.minhasviagens.R;
 import es.ufpi.br.minhasviagens.dados.Ponto;
+import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 
 /**
  * Tela que carrega um Mapa com as cidades de cada viagem realizada
@@ -22,11 +23,16 @@ public class MapaViagens extends FragmentActivity implements OnMapReadyCallback 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mapa_viagens);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        try{
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_mapa_viagens);
+            // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+            mapFragment.getMapAsync(this);
+        }catch (Exception e){
+            String mensagem="Erro: " + e.getMessage();
+            new Mensagens().mostraMensagem(this, mensagem);
+        }
     }
 
     /**
@@ -42,10 +48,15 @@ public class MapaViagens extends FragmentActivity implements OnMapReadyCallback 
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        Ponto teresina = new Ponto("Teresina", -5.056682, -42.790264);
+        try {
+            Ponto teresina = new Ponto("Teresina", -5.056682, -42.790264);
 
-        //cria os marcadores de cada ponto
-        mMap.addMarker(new MarkerOptions().position(teresina.getPontoGeografico()).title(teresina.getNomeCidade()));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(teresina.getPontoGeografico()));
+            //cria os marcadores de cada ponto
+            mMap.addMarker(new MarkerOptions().position(teresina.getPontoGeografico()).title(teresina.getNomeCidade()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(teresina.getPontoGeografico()));
+        }catch (Exception e){
+            String mensagem="Erro: " + e.getMessage();
+            new Mensagens().mostraMensagem(this, mensagem);
+        }
     }
 }

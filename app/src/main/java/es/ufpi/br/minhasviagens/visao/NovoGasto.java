@@ -16,6 +16,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import es.ufpi.br.minhasviagens.R;
+import es.ufpi.br.minhasviagens.controle.Fachada;
 import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 
 public class NovoGasto extends AppCompatActivity {
@@ -23,15 +24,21 @@ public class NovoGasto extends AppCompatActivity {
     private List<String> tipos = new ArrayList<String>();
     private int ano, mes, dia;
     private Button dataGasto;
+    private Fachada fachada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novo_gasto);
+        //faz referência a Fachada da Aplicação
+        fachada = Fachada.getIntance();
         populaTiposGastos();
         exibeDataAtual();
     }
 
+    /**
+     * popula os tipos de gastos no Spinner
+     */
     private void populaTiposGastos() {
         //Adiciona os tipos de gastos
         tipos.add("Alimentação");

@@ -27,18 +27,22 @@ public class NovaViagem extends AppCompatActivity {
     int ano, mes, dia;
     EditText destino, orcamento, quantidadePessoas;
     RadioButton lazer, negocios;
+    Fachada fachada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nova_viagem);
-
+        //faz referência a Fachada da Aplicação
+        fachada = Fachada.getIntance();
         //pega dados do usuario corrente da aplicacao
         Bundle dadosUsuario = getIntent().getExtras();
+
         if (dadosUsuario != null){
             usuario.setNome(dadosUsuario.getString("nomeUsuario"));
             usuario.setEmail(dadosUsuario.getString("emailUsuario"));
         }
+
         destino = (EditText) findViewById(R.id.editTextDestino);
         orcamento = (EditText) findViewById(R.id.editTextValorOrcamento);
         quantidadePessoas = (EditText) findViewById(R.id.editTextQuantidadePessoas);
@@ -140,7 +144,7 @@ public class NovaViagem extends AppCompatActivity {
             viagem.setDataFim(fim);
             viagem.setDescricao(destino.getText().toString());
             viagem.setDestino(destino.getText().toString());
-            viagem.setCidade(null);
+            viagem.setCidade(null); //TODO pegar o ponto geográfico da cidade
             try{
                 String padrao = "dd/MM/yyyy";
                 SimpleDateFormat formato = new SimpleDateFormat(padrao);
@@ -149,7 +153,7 @@ public class NovaViagem extends AppCompatActivity {
 
                 if (checaDataInicioFim(dataInicio, dataFinal)){
                     inserirViagem(viagem);
-                    new Mensagens().mostraMensagem(this, "Viagem destino " + viagem.getDestino() + "salva com sucesso!");
+                    new Mensagens().mostraMensagem(this, "Viagem destino " + viagem.getDestino() + " cadastrada com sucesso!");
                     limparCampos();
                 }else{
                     new Mensagens().mostraMensagem(this, "Data de início > Data de fim");
@@ -166,7 +170,7 @@ public class NovaViagem extends AppCompatActivity {
      * Insere uma nova viagem
      */
     public void inserirViagem(Viagem viagem){
-        new ControladorViagens().novaViagem(usuario, viagem);
+        fachada.novaViagem(usuario, viagem);
     }
 
     /**

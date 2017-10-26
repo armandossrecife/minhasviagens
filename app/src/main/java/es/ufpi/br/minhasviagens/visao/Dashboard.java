@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import es.ufpi.br.minhasviagens.R;
+import es.ufpi.br.minhasviagens.controle.Fachada;
 import es.ufpi.br.minhasviagens.dados.Usuario;
 import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 
@@ -16,6 +17,7 @@ import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 public class Dashboard extends AppCompatActivity {
     private Usuario usuario = new Usuario();
     private Bundle bundleUsuario = new Bundle();
+    private Fachada fachada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,8 @@ public class Dashboard extends AppCompatActivity {
 
         //pega dados do usuario corrente da aplicacao
         Bundle dadosUsuario = getIntent().getExtras();
+        //Faz referência a Fachada da aplicação
+        fachada = Fachada.getIntance();
         if (dadosUsuario != null){
             usuario.setNome(dadosUsuario.getString("nomeUsuario"));
             usuario.setEmail(dadosUsuario.getString("emailUsuario"));
