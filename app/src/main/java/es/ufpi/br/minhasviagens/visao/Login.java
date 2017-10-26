@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import es.ufpi.br.minhasviagens.R;
 import es.ufpi.br.minhasviagens.controle.ControladorUsuarios;
+import es.ufpi.br.minhasviagens.controle.Fachada;
 import es.ufpi.br.minhasviagens.dados.Usuario;
 import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 
@@ -17,11 +18,14 @@ import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 public class Login extends AppCompatActivity {
     private EditText usuario;
     private EditText senha;
+    private Fachada fachada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //instacia e inicializa a Fachada única da aplicação
+        fachada = new Fachada();
 
         //carrega o conteudo dos editText
         usuario = (EditText)findViewById(R.id.editTextEmail);
@@ -35,10 +39,10 @@ public class Login extends AppCompatActivity {
     public void login(View v) {
         String usuarioInformado = usuario.getText().toString();
         String senhaInformada = senha.getText().toString();
-
         //tratar excecao de erro de conexao ou qualquer outra excecao
         try {
-            Usuario usuario = new ControladorUsuarios().carregaDadosUsuario(usuarioInformado);
+            fachada.populaUsuarios(); //Para efeito de testes //TODO remover quando tiver com acesso real ao serviço de dados dos usuários
+            Usuario usuario = fachada.buscarUsuarioEmail(usuarioInformado);
             //verifica os dados do usuario
             if (usuario != null){
                 if (usuarioInformado.equals(usuario.getEmail()) && senhaInformada.equals(usuario.getSenha())) {

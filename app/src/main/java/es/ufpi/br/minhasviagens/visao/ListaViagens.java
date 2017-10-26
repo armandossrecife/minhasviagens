@@ -9,6 +9,7 @@ import es.ufpi.br.minhasviagens.dados.Ponto;
 import es.ufpi.br.minhasviagens.dados.Usuario;
 import es.ufpi.br.minhasviagens.controle.*;
 import es.ufpi.br.minhasviagens.dados.Viagem;
+import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 
 import android.content.Intent;
 import android.view.View;
@@ -30,14 +31,17 @@ public class ListaViagens extends AppCompatActivity {
     private ListView listView;
     List<Viagem> viagensUsuario = new LinkedList<Viagem>();
     List<Ponto> pontosViagensUsuario = new LinkedList<Ponto>();
+    private Fachada fachada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_viagens);
-
+        //Faz referência a Fachada da Aplicação
+        fachada = Fachada.getIntance();
         //pega dados do usuario corrente da aplicacao
         Bundle dadosUsuario = getIntent().getExtras();
+
         if (dadosUsuario != null){
             usuario.setNome(dadosUsuario.getString("nomeUsuario"));
             usuario.setEmail(dadosUsuario.getString("emailUsuario"));
@@ -72,16 +76,16 @@ public class ListaViagens extends AppCompatActivity {
      */
     public void listarViagens(){
         //Mostra a lista de viagens na Tela
-        viagensUsuario = new ControladorViagens().listarViagens(usuario);
-
-        /**
-         *
-         Carrega os pontos de cada viagem List<Ponto> listaPontos
-         lista de pontos (latitude, longitude) das viagens listadas
-         E preciso criar um bundle para passar os pontos para o Mapa
-         bundleListaPontos...
-         */
-        if (viagensUsuario != null) {
+        viagensUsuario = fachada.listarViagensUsario(usuario);
+        if (viagensUsuario != null){
+            /**
+             *
+             Carrega os pontos de cada viagem List<Ponto> listaPontos
+             lista de pontos (latitude, longitude) das viagens listadas
+             E preciso criar um bundle para passar os pontos para o Mapa
+             bundleListaPontos...
+             Cada ponto corresponde a um ponto geográfico de uma cidade registrada em uma viagem
+             */
             for (Viagem vu : viagensUsuario) {
                 pontosViagensUsuario.add(vu.getCidade());
             }
@@ -96,5 +100,7 @@ public class ListaViagens extends AppCompatActivity {
         Intent intentMostraMapaViagens = new Intent(this, MapaViagens.class);
         //intentMostraViagens.putExtras(bundleListaPontos) carrega os pontos para o Mapa
         startActivity(intentMostraMapaViagens);
+        //TODO garantir que o google play services foi devidamente instalado no emulador
+        //exemplo para emulador genymotion https://inthecheesefactory.com/blog/how-to-install-google-services-on-genymotion/en
     }
 }
