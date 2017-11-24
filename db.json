@@ -1,0 +1,62 @@
+{
+  "usuarios": [
+	{ 
+		"id": "1",
+		"nome": "Armando",
+		"email": "armando@ufpi.edu.br",
+		"senha": "123",
+		"sexo": "masculino",
+		"endereco": "Rua Território Fernando de Noronha"
+	},
+    {
+		"id": "2",
+		"nome": "Maria",
+		"email": "maria@ufpi.edu.br",
+		"senha": "123",
+		"sexo": "feminino",
+		"endereco": "Rua XPTO"
+	},
+	{
+		"id": "3",
+		"nome": "Francisco",
+		"email": "francisco@ufpi.edu.br",
+		"senha": "123",
+		"sexo": "masculino",
+		"endereco": "Rua ZYB"
+	}  
+  ], 
+    "viagens": [
+	{
+		"descricao": "viagem 1",
+		"dataInicio": "01/01/2017",
+		"dataFim": "10/01/2017",
+		"destino": "Destino 1",
+		"valor": "5000",
+		"cidade": {
+		        "pontoGeografico": {
+		          "latitude": 0, "longitude":0
+		        },
+            "nomeCidade": "cidade 1",
+            "latitude": "0",
+            "longitude": "0"
+		},
+		"usuario": "1"
+	}, 
+	{
+		"descricao": "viagem 2",
+		"dataInicio": "11/01/2017",
+		"dataFim": "20/01/2017",
+		"destino": "Destino 2",
+		"valor": "7000",
+		"cidade": {
+		        "pontoGeografico": {
+		          "latitude": 0, "longitude":0
+		        },
+            "nomeCidade": "cidade 1",
+            "latitude": "0",
+            "longitude": "0"
+		},
+		"usuario": "1"
+	}
+	]
+}
