@@ -7,14 +7,18 @@ import com.google.android.gms.maps.model.LatLng;
  */
 
 public class Ponto {
-    LatLng pontoGeografico;
-    String nomeCidade;
-    double latitude;
-    double longitude;
+    private LatLng pontoGeografico;
+    private String nomeCidade;
+    private double latitude;
+    private double longitude;
 
     public Ponto(String nomeCidade, double latitude, double logintude){
         pontoGeografico = new LatLng(latitude, logintude);
         this.nomeCidade = nomeCidade;
+    }
+
+    public Ponto(){
+
     }
 
     public LatLng getPontoGeografico() {
