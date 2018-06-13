@@ -1,6 +1,6 @@
 package es.ufpi.br.minhasviagens.visao;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
 import es.ufpi.br.minhasviagens.R;
@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Tela que Lista as viagens do usuario
  */
-public class ListaViagens extends AppCompatActivity {
+public class ListaViagens extends Activity {
     Usuario usuario = new Usuario();
     private Bundle bundleListaPontos = new Bundle();
     private Button botao;

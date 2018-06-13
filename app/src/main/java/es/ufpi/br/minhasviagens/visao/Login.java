@@ -1,7 +1,7 @@
 package es.ufpi.br.minhasviagens.visao;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,7 +15,7 @@ import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 /**
  * Classe que implementa a Tela de Login da Aplicacao
  */
-public class Login extends AppCompatActivity {
+public class Login extends Activity {
     private EditText usuario;
     private EditText senha;
     private Fachada fachada;

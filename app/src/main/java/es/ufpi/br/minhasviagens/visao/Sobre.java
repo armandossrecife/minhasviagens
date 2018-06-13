@@ -1,11 +1,11 @@
 package es.ufpi.br.minhasviagens.visao;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
 import es.ufpi.br.minhasviagens.R;
 
-public class Sobre extends AppCompatActivity {
+public class Sobre extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

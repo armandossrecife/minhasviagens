@@ -1,8 +1,8 @@
 package es.ufpi.br.minhasviagens.visao;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -14,7 +14,7 @@ import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 /**
  * Tela Principal que mostra as opcoes da aplicacao
  */
-public class Dashboard extends AppCompatActivity {
+public class Dashboard extends Activity {
     private Usuario usuario = new Usuario();
     private Bundle bundleUsuario = new Bundle();
     private Fachada fachada;

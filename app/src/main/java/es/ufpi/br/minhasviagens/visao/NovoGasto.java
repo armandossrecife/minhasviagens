@@ -1,8 +1,8 @@
 package es.ufpi.br.minhasviagens.visao;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,7 +19,7 @@ import es.ufpi.br.minhasviagens.R;
 import es.ufpi.br.minhasviagens.controle.Fachada;
 import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 
-public class NovoGasto extends AppCompatActivity {
+public class NovoGasto extends Activity {
     private Spinner spinner;
     private List<String> tipos = new ArrayList<String>();
     private int ano, mes, dia;

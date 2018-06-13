@@ -1,8 +1,8 @@
 package es.ufpi.br.minhasviagens.visao;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +20,7 @@ import es.ufpi.br.minhasviagens.controle.*;
 import es.ufpi.br.minhasviagens.dados.*;
 import es.ufpi.br.minhasviagens.utilidades.Mensagens;
 
-public class NovaViagem extends AppCompatActivity {
+public class NovaViagem extends Activity {
     Usuario usuario = new Usuario();
     Button botaoDataEntrada;
     Button botaoDataSaida;
